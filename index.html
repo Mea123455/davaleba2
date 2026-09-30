@@ -1,68 +1,1596 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Growing Strawberries</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Professional Strawberry Growing Guide</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f5f3;
+            color: #26332b;
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+        header {
+            background:
+                linear-gradient(rgba(20, 35, 27, 0.78), rgba(20, 35, 27, 0.78)),
+                url("https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            min-height: 450px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            font-size: 52px;
+            margin: 0 0 15px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 20px;
+            max-width: 700px;
+            color: #e6e9e6;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: #18251e;
+            padding: 12px;
+            text-align: center;
+
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: #e8eee9;
+            text-decoration: none;
+
+            display: inline-block;
+            padding: 10px 17px;
+            margin: 3px;
+
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #486653;
+            color: white;
+        }
+
+        /* MAIN */
+
+        main {
+            max-width: 1150px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: white;
+            margin-bottom: 35px;
+            padding: 35px;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        section h2 {
+            color: #294936;
+            font-size: 30px;
+
+            border-bottom: 2px solid #d7ddd8;
+            padding-bottom: 12px;
+            margin-top: 0;
+        }
+
+        ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* IMAGE CARDS */
+
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .image-card {
+            background: #f7f8f7;
+            border-radius: 8px;
+            overflow: hidden;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-card p {
+            margin: 0;
+            padding: 16px;
+            font-weight: bold;
+            color: #294936;
+        }
+
+        /* BUTTONS */
+
+        button {
+            background: #294936;
+            color: white;
+
+            border: none;
+            border-radius: 4px;
+
+            padding: 12px 22px;
+            font-size: 15px;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #486653;
+            transform: translateY(-2px);
+        }
+
+        /* INFORMATION BOX */
+
+        .info {
+            display: none;
+
+            background: #eef2ee;
+            border-left: 4px solid #486653;
+
+            padding: 18px;
+            margin-top: 18px;
+
+            border-radius: 4px;
+        }
+
+        /* EXTERNAL LINKS */
+
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .resource-link {
+            display: block;
+
+            background: #f1f4f1;
+            color: #294936;
+
+            text-decoration: none;
+
+            padding: 18px;
+            border-radius: 6px;
+
+            border: 1px solid #dce2dc;
+
+            transition: 0.3s;
+        }
+
+        .resource-link:hover {
+            background: #294936;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .resource-link strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #18251e;
+            color: #cfd7d1;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer a {
+            color: #b9cbbd;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* TOP BUTTON */
+
+        .top-button {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #294936;
+            color: white;
+
+            border-radius: 50%;
+            text-decoration: none;
+
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .top-button:hover {
+            background: #486653;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 36px;
+            }
+
+            header p {
+                font-size: 17px;
+            }
+
+            nav a {
+                display: block;
+            }
+
+            section {
+                padding: 25px 20px;
+            }
+        }
+    </style>
 </head>
-<body>
-    <img src="Garden_strawberry_(Fragaria_×_ananassa)_single2.jpg" alt="Strawberry Garden" width="500" height="400">
 
-    <h1 id="top">Growing Strawberries</h1>
+<body id="top">
 
-    <h2>Table of Contents</h2>
+<!-- HEADER -->
 
-    <ul>
-        <li><a href="#soil">1. Preparing the Soil</a></li>
-        <li><a href="#planting">2. Planting Strawberries</a></li>
-        <li><a href="#care">3. Caring for Strawberries</a></li>
-        <li><a href="#harvesting">4. Harvesting</a></li>
-        <li><a href="#conclusion">5. Conclusion</a></li>
-    </ul>
+<header>
 
-    <h2 id="soil">1. Preparing the Soil</h2>
+    <h1>Strawberry Cultivation</h1>
+
+    <p>
+        A practical guide to soil preparation, planting,
+        plant care and harvesting.
+    </p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="#soil">Soil Preparation</a>
+
+    <a href="#planting">Planting</a>
+
+    <a href="#care">Plant Care</a>
+
+    <a href="#harvesting">Harvesting</a>
+
+    <a href="#resources">Resources</a>
+
+</nav>
+
+
+<main>
+
+
+<!-- SOIL -->
+
+<section id="soil">
+
+    <h2>1. Preparing the Soil</h2>
+
     <ol>
-        <li><p>Strawberries grow best in fertile and well-drained soil.</p></li>
-        <li><p>Before planting, the soil should be cleaned of weeds and carefully prepared.</p></li>
-        <li><p>Compost or organic fertilizer can be added to improve the quality of the soil.</p></li>
+
+        <li>
+            Strawberries perform best in fertile,
+            well-drained soil with good organic matter.
+        </li>
+
+        <li>
+            Before planting, remove weeds and prepare
+            the soil thoroughly.
+        </li>
+
+        <li>
+            Compost or another suitable organic material
+            can be incorporated into the soil.
+        </li>
+
     </ol>
 
-    <a href="#top">Back to top</a>
 
-    <h2 id="planting">2. Planting Strawberries</h2>
+    <div class="image-container">
+
+        <div
+            class="image-card"
+            onclick="showMessage(
+            'Well-prepared soil provides the foundation for healthy strawberry plants.'
+            )"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=900&q=80"
+                alt="Fresh strawberries"
+            >
+
+            <p>
+                Click the image for information
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button onclick="showInfo('soilInfo')">
+        More information
+    </button>
+
+
+    <div class="info" id="soilInfo">
+
+        Strawberries generally prefer fertile,
+        well-drained soil. Good soil preparation can
+        improve root development and plant growth.
+
+    </div>
+
+</section>
+
+
+<!-- PLANTING -->
+
+<section id="planting">
+
+    <h2>2. Planting Strawberries</h2>
+
     <ol>
-        <li><p>Strawberry plants should be planted in a sunny location.</p></li>
-        <li><p>Enough space should be left between the plants so they can grow properly.</p></li>
-        <li><p>After planting, the strawberries should be watered carefully.</p></li>
+
+        <li>
+            Select a location that receives sufficient
+            sunlight throughout the day.
+        </li>
+
+        <li>
+            Leave adequate space between plants to
+            provide good airflow and room for growth.
+        </li>
+
+        <li>
+            Water the plants after planting and monitor
+            soil moisture regularly.
+        </li>
+
     </ol>
 
-    <a href="#top">Back to top</a>
 
-    <h2 id="care">3. Caring for Strawberries</h2>
+    <div class="image-container">
+
+        <div
+            class="image-card"
+            onclick="showMessage(
+            'Sunlight, spacing and proper planting depth are important factors when establishing strawberry plants.'
+            )"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1518635017498-87f514b751ba?auto=format&fit=crop&w=900&q=80"
+                alt="Strawberry plants"
+            >
+
+            <p>
+                Click for planting information
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button onclick="showInfo('plantInfo')">
+        Planting tips
+    </button>
+
+
+    <div class="info" id="plantInfo">
+
+        Choose a location with good sunlight and drainage.
+        Avoid planting in areas where water regularly
+        remains on the soil surface.
+
+    </div>
+
+</section>
+
+
+<!-- CARE -->
+
+<section id="care">
+
+    <h2>3. Plant Care</h2>
+
     <ol>
-        <li><p>Strawberries need regular watering, especially during dry weather.</p></li>
-        <li><p>Weeds should be removed because they can take nutrients and water from the plants.</p></li>
-        <li><p>Suitable fertilizer can be used during the growing season.</p></li>
+
+        <li>
+            Provide regular watering while avoiding
+            excessive moisture.
+        </li>
+
+        <li>
+            Remove weeds around the plants to reduce
+            competition for water and nutrients.
+        </li>
+
+        <li>
+            Apply an appropriate fertilizer according
+            to soil conditions and plant requirements.
+        </li>
+
     </ol>
 
-    <a href="#top">Back to top</a>
 
-    <h2 id="harvesting">4. Harvesting</h2>
+    <div class="image-container">
+
+        <div
+            class="image-card"
+            onclick="showMessage(
+            'Regular monitoring helps identify watering, nutrition and plant health problems early.'
+            )"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1592409049052-6f8e3f5b4a0f?auto=format&fit=crop&w=900&q=80"
+                alt="Strawberry plant care"
+            >
+
+            <p>
+                Click for plant-care information
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button onclick="showInfo('careInfo')">
+        Care information
+    </button>
+
+
+    <div class="info" id="careInfo">
+
+        Consistent care is important throughout the
+        growing season. Monitor the plants regularly
+        for signs of stress, pests or disease.
+
+    </div>
+
+</section>
+
+
+<!-- HARVESTING -->
+
+<section id="harvesting">
+
+    <h2>4. Harvesting</h2>
+
     <ol>
-        <li><p>Strawberries are ready to harvest when they become completely red.</p></li>
-        <li><p>The fruit should be picked carefully to avoid damaging it.</p></li>
-        <li><p>Fresh strawberries can be eaten directly or used to make desserts.</p></li>
+
+        <li>
+            Strawberries can be harvested when the fruit
+            has developed its mature color.
+        </li>
+
+        <li>
+            Handle the fruit carefully to reduce bruising
+            and physical damage.
+        </li>
+
+        <li>
+            Fresh strawberries can be consumed immediately
+            or used for processing and desserts.
+        </li>
+
     </ol>
 
-    <a href="#top">Back to top</a>
 
-    <h2 id="conclusion">5. Conclusion</h2>
+    <div class="image-container">
+
+        <div
+            class="image-card"
+            onclick="showMessage(
+            'Careful harvesting helps maintain fruit quality and reduces unnecessary damage.'
+            )"
+        >
+
+            <img
+                src="https://images.unsplash.com/photo-1543158181-e6f9f6712055?auto=format&fit=crop&w=900&q=80"
+                alt="Strawberry harvest"
+            >
+
+            <p>
+                Click for harvesting information
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button onclick="showInfo('harvestInfo')">
+        Harvesting tips
+    </button>
+
+
+    <div class="info" id="harvestInfo">
+
+        Harvest ripe fruit carefully and avoid squeezing
+        the berries. Handle harvested fruit gently to
+        maintain quality.
+
+    </div>
+
+</section>
+
+
+<!-- RESOURCES -->
+
+<section id="resources">
+
+    <h2>5. External Resources</h2>
+
+    <p>
+        The following links provide additional information
+        about strawberry cultivation and agricultural practices.
+    </p>
+
+
+    <div class="resources">
+
+        <a
+            class="resource-link"
+            href="https://extension.umn.edu/fruit/growing-strawberries-home-garden"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <strong>University of Minnesota Extension</strong>
+
+            Growing strawberries in the home garden.
+
+        </a>
+
+
+        <a
+            class="resource-link"
+            href="https://extension.oregonstate.edu/gardening/berries-fruit/growing-strawberries-home-garden"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <strong>Oregon State University Extension</strong>
+
+            Strawberry growing information and advice.
+
+        </a>
+
+
+        <a
+            class="resource-link"
+            href="https://www.rhs.org.uk/fruit/strawberries/grow-your-own"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <strong>Royal Horticultural Society</strong>
+
+            Practical information about growing strawberries.
+
+        </a>
+
+
+        <a
+            class="resource-link"
+            href="https://www.fao.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <strong>FAO</strong>
+
+            International information about agriculture
+            and food production.
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- CONCLUSION -->
+
+<section>
+
+    <h2>6. Conclusion</h2>
+
     <ol>
-        <li><p>Growing strawberries is an interesting and useful activity.</p></li>
-        <li><p>With proper soil, watering, and care, it is possible to get a good harvest.</p></li>
-        <li><p>Strawberries can be grown in gardens, pots, or greenhouses.</p></li>
+
+        <li>
+            Successful strawberry production starts
+            with suitable soil and site preparation.
+        </li>
+
+        <li>
+            Proper planting, irrigation and regular
+            maintenance support healthy plant development.
+        </li>
+
+        <li>
+            Careful harvesting helps preserve fruit
+            quality after the growing season.
+        </li>
+
     </ol>
 
-    <a href="#top">Back to top</a>
+
+    <button
+        onclick="showMessage(
+        'Thank you for visiting the Strawberry Cultivation Guide.'
+        )"
+    >
+
+        Finish
+
+    </button>
+
+</section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        Strawberry Cultivation Guide © 2026
+    </p>
+
+    <p>
+        External resources:
+        <a href="https://extension.umn.edu/"
+           target="_blank">
+            University Extension
+        </a>
+    </p>
+
+</footer>
+
+
+<!-- BACK TO TOP -->
+
+<a
+    href="#top"
+    class="top-button"
+    title="Back to top"
+>
+    ↑
+</a>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    function showInfo(id) {
+
+        const box = document.getElementById(id);
+
+        if (box.style.display === "block") {
+
+            box.style.display = "none";
+
+        } else {
+
+            box.style.display = "block";
+
+        }
+
+    }
+
+
+    function showMessage(message) {
+
+        alert(message);
+
+    }
+
+</script>
+
 
 </body>
-</html>
+</html><style>
+
+    /* ==============================
+       CINEMATIC STORY SECTION
+       ============================== */
+
+    .cinema-section {
+        position: relative;
+        overflow: hidden;
+        background: #111713;
+        color: #f1f1ed;
+        padding: 55px 35px;
+    }
+
+    .cinema-section h2 {
+        color: #d9b36c;
+        border-bottom: 1px solid #3c463f;
+    }
+
+    .cinema-intro {
+        max-width: 750px;
+        color: #bfc6c0;
+        font-size: 17px;
+        margin-bottom: 35px;
+    }
+
+    .story-grid {
+        display: grid;
+        grid-template-columns:
+            repeat(auto-fit, minmax(270px, 1fr));
+        gap: 25px;
+    }
+
+    .story-card {
+        position: relative;
+        min-height: 390px;
+        overflow: hidden;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #202821;
+        border: 1px solid #39433c;
+
+        transition:
+            transform 0.4s ease,
+            box-shadow 0.4s ease;
+    }
+
+    .story-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+    }
+
+    .story-card img {
+        width: 100%;
+        height: 390px;
+        object-fit: cover;
+        display: block;
+
+        filter: saturate(0.8) contrast(1.05);
+
+        transition:
+            transform 0.7s ease,
+            filter 0.7s ease;
+    }
+
+    .story-card:hover img {
+        transform: scale(1.07);
+        filter: saturate(1) contrast(1.1);
+    }
+
+    .story-overlay {
+        position: absolute;
+        inset: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        padding: 25px;
+
+        background:
+            linear-gradient(
+                transparent 25%,
+                rgba(0,0,0,0.95) 100%
+            );
+    }
+
+    .story-number {
+        color: #d9b36c;
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    .story-overlay h3 {
+        font-family: Georgia, serif;
+        font-size: 25px;
+        margin: 8px 0;
+        color: white;
+    }
+
+    .story-overlay p {
+        color: #d1d5d2;
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .story-read {
+        display: inline-block;
+        margin-top: 15px;
+        color: #d9b36c;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+
+    /* ==============================
+       CINEMATIC MODAL
+       ============================== */
+
+    .story-modal {
+        position: fixed;
+        inset: 0;
+
+        background: rgba(5, 8, 6, 0.93);
+
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        padding: 25px;
+
+        z-index: 12000;
+    }
+
+    .story-modal.active {
+        display: flex;
+    }
+
+    .story-modal-content {
+        max-width: 900px;
+        width: 100%;
+
+        max-height: 90vh;
+        overflow-y: auto;
+
+        background: #18201b;
+        border: 1px solid #465149;
+
+        position: relative;
+
+        animation: cinemaOpen 0.4s ease;
+    }
+
+    @keyframes cinemaOpen {
+        from {
+            opacity: 0;
+            transform: scale(0.94);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .story-modal-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .story-modal-text {
+        padding: 30px;
+    }
+
+    .story-modal-text .label {
+        color: #d9b36c;
+        letter-spacing: 3px;
+        font-size: 12px;
+    }
+
+    .story-modal-text h3 {
+        font-family: Georgia, serif;
+        font-size: 35px;
+        color: white;
+        margin: 10px 0 20px;
+    }
+
+    .story-modal-text p {
+        color: #c8cfca;
+        font-size: 16px;
+    }
+
+    .close-story {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        width: 42px;
+        height: 42px;
+
+        border: 1px solid #ddd;
+        border-radius: 50%;
+
+        background: rgba(0,0,0,0.65);
+        color: white;
+
+        font-size: 20px;
+        cursor: pointer;
+
+        z-index: 5;
+    }
+
+
+    /* ==============================
+       FILM STRIP
+       ============================== */
+
+    .film-strip {
+        display: flex;
+        gap: 10px;
+
+        margin: 40px 0;
+
+        overflow: hidden;
+
+        border-top: 1px solid #3a443d;
+        border-bottom: 1px solid #3a443d;
+
+        padding: 12px 0;
+    }
+
+    .film-frame {
+        min-width: 130px;
+        height: 80px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #29332c,
+                #111713
+            );
+
+        border: 1px solid #475149;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #8f9a92;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+
+    /* ==============================
+       DIRECTOR CONTROLS
+       ============================== */
+
+    .director-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .director-controls button {
+        background: #202a23;
+        color: #d9b36c;
+        border: 1px solid #59655c;
+        padding: 10px 16px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .director-controls button:hover,
+    .director-controls button.active {
+        background: #d9b36c;
+        color: #18201b;
+    }
+
+
+    /* ==============================
+       CINEMATIC MODE
+       ============================== */
+
+    body.cinematic-mode::after {
+        content: "";
+
+        position: fixed;
+        inset: 0;
+
+        pointer-events: none;
+
+        z-index: 11000;
+
+        background:
+            radial-gradient(
+                ellipse at center,
+                transparent 40%,
+                rgba(0,0,0,0.5) 100%
+            );
+    }
+
+    body.golden-hour {
+        filter: sepia(0.12) saturate(1.12);
+    }
+
+    body.black-white {
+        filter: grayscale(1);
+    }
+
+
+    /* ==============================
+       MOBILE
+       ============================== */
+
+    @media (max-width: 600px) {
+
+        .cinema-section {
+            padding: 35px 20px;
+        }
+
+        .story-modal {
+            padding: 10px;
+        }
+
+        .story-modal-image {
+            height: 250px;
+        }
+
+        .story-modal-text h3 {
+            font-size: 27px;
+        }
+
+    }
+
+</style>
+
+2. Resources სექციამდე ჩასვი ეს ახალი კინემატოგრაფიული ნაწილი
+<!-- =========================================
+     CINEMATIC STORIES
+     ========================================= -->
+
+<section class="cinema-section" id="stories">
+
+    <h2>6. People Behind the Harvest</h2>
+
+    <p class="cinema-intro">
+        Strawberry cultivation is not only about plants and soil.
+        It is also about the people who work with the land,
+        develop new techniques and bring the harvest to the table.
+    </p>
+
+
+    <!-- FILM STRIP -->
+
+    <div class="film-strip">
+
+        <div class="film-frame">SCENE 01</div>
+        <div class="film-frame">SCENE 02</div>
+        <div class="film-frame">SCENE 03</div>
+        <div class="film-frame">SCENE 04</div>
+        <div class="film-frame">SCENE 05</div>
+
+    </div>
+
+
+    <!-- STORIES -->
+
+    <div class="story-grid">
+
+
+        <!-- STORY 1 -->
+
+        <article
+            class="story-card"
+            onclick="openStory('story1')"
+        >
+
+            <img
+                src="https://cdn.agroklub.com/upload/images/text/urod-jagoda-tezak-osam-tona.jpg"
+                alt="Farmer holding freshly harvested strawberries"
+            >
+
+            <div class="story-overlay">
+
+                <span class="story-number">
+                    STORY 01
+                </span>
+
+                <h3>
+                    The Morning Harvest
+                </h3>
+
+                <p>
+                    A fictional portrait of a farmer
+                    beginning the harvest at sunrise.
+                </p>
+
+                <span class="story-read">
+                    READ STORY →
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- STORY 2 -->
+
+        <article
+            class="story-card"
+            onclick="openStory('story2')"
+        >
+
+            <img
+                src="https://www.pexels.com/photo/a-woman-in-a-plaid-shirt-harvesting-strawberries-7457191/"
+                alt="Woman harvesting strawberries"
+            >
+
+            <div class="story-overlay">
+
+                <span class="story-number">
+                    STORY 02
+                </span>
+
+                <h3>
+                    Between the Rows
+                </h3>
+
+                <p>
+                    A fictional story about patience,
+                    observation and farm work.
+                </p>
+
+                <span class="story-read">
+                    READ STORY →
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- STORY 3 -->
+
+        <article
+            class="story-card"
+            onclick="openStory('story3')"
+        >
+
+            <img
+                src="https://cdn.activityboard.jp/KR01354890/pictures/l000050D57/P0002995B4.jpg?size=pict640_480&v=1"
+                alt="Farmer with strawberries in a greenhouse"
+            >
+
+            <div class="story-overlay">
+
+                <span class="story-number">
+                    STORY 03
+                </span>
+
+                <h3>
+                    Inside the Greenhouse
+                </h3>
+
+                <p>
+                    A fictional account of controlled
+                    growing and modern cultivation.
+                </p>
+
+                <span class="story-read">
+                    READ STORY →
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- DIRECTOR CONTROLS -->
+
+    <h3 style="margin-top:45px; color:#d9b36c;">
+        Director's Controls
+    </h3>
+
+    <p style="color:#aeb7b0;">
+        Change the visual atmosphere of the documentary.
+    </p>
+
+    <div class="director-controls">
+
+        <button
+            type="button"
+            onclick="cinematicWide()"
+        >
+            Wide Shot
+        </button>
+
+        <button
+            type="button"
+            onclick="cinematicClose()"
+        >
+            Close-Up
+        </button>
+
+        <button
+            type="button"
+            onclick="cinematicGolden()"
+        >
+            Golden Hour
+        </button>
+
+        <button
+            type="button"
+            onclick="cinematicBW()"
+        >
+            Black & White
+        </button>
+
+        <button
+            type="button"
+            onclick="cinematicReset()"
+        >
+            Reset
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     STORY MODAL
+     ========================================= -->
+
+<div
+    class="story-modal"
+    id="storyModal"
+>
+
+    <div class="story-modal-content">
+
+        <button
+            class="close-story"
+            onclick="closeStory()"
+        >
+            ×
+        </button>
+
+
+        <img
+            id="storyModalImage"
+            class="story-modal-image"
+            src=""
+            alt=""
+        >
+
+
+        <div class="story-modal-text">
+
+            <span
+                class="label"
+                id="storyModalLabel"
+            >
+                DOCUMENTARY STORY
+            </span>
+
+            <h3 id="storyModalTitle"></h3>
+
+            <p id="storyModalText"></p>
+
+        </div>
+
+    </div>
+
+</div>
+
+3. script-ის ბოლოში დაამატე ეს JavaScript
+<script>
+
+    /* =========================================
+       CINEMATIC STORIES
+       ========================================= */
+
+    const stories = {
+
+        story1: {
+
+            title: "The Morning Harvest",
+
+            image:
+                "https://cdn.agroklub.com/upload/images/text/urod-jagoda-tezak-osam-tona.jpg",
+
+            text:
+                "The field is quiet before sunrise. " +
+                "A farmer walks between long rows of strawberry plants, " +
+                "checking the fruit one plant at a time. " +
+                "The work looks simple from a distance, but every harvest " +
+                "depends on timing, weather, soil and careful observation. " +
+                "This is a fictional documentary-style story inspired by " +
+                "the daily rhythm of strawberry farming."
+
+        },
+
+
+        story2: {
+
+            title: "Between the Rows",
+
+            image:
+                "https://images.unsplash.com/photo-1592409049052-6f8e3f5b4a0f?auto=format&fit=crop&w=1200&q=80",
+
+            text:
+                "By late morning, the field becomes a different world. " +
+                "Workers move slowly between the rows, examining leaves " +
+                "and fruit. A good grower learns to notice small changes: " +
+                "the moisture of the soil, the color of the leaves and " +
+                "the condition of the berries. The story is fictional, " +
+                "but reflects the observational nature of agricultural work."
+
+        },
+
+
+        story3: {
+
+            title: "Inside the Greenhouse",
+
+            image:
+                "https://cdn.activityboard.jp/KR01354890/pictures/l000050D57/P0002995B4.jpg?size=pict640_480&v=1",
+
+            text:
+                "Inside the greenhouse, the environment is carefully managed. " +
+                "Temperature, irrigation and plant position become part of " +
+                "the grower's daily routine. The controlled environment allows " +
+                "the farmer to observe the crop closely and respond to changing " +
+                "conditions. This is a fictional story inspired by modern " +
+                "greenhouse cultivation."
+
+        }
+
+    };
+
+
+    function openStory(id) {
+
+        const story = stories[id];
+
+        if (!story) return;
+
+
+        document.getElementById(
+            "storyModalTitle"
+        ).textContent = story.title;
+
+
+        document.getElementById(
+            "storyModalText"
+        ).textContent = story.text;
+
+
+        const image =
+            document.getElementById(
+                "storyModalImage"
+            );
+
+        image.src = story.image;
+        image.alt = story.title;
+
+
+        document.getElementById(
+            "storyModal"
+        ).classList.add("active");
+
+    }
+
+
+    function closeStory() {
+
+        document.getElementById(
+            "storyModal"
+        ).classList.remove("active");
+
+    }
+
+
+    /* CLOSE WHEN CLICKING OUTSIDE */
+
+    document.getElementById(
+        "storyModal"
+    ).addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                this
+            ) {
+
+                closeStory();
+
+            }
+
+        }
+    );
+
+
+    /* ESCAPE KEY */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Escape") {
+
+                closeStory();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       CINEMATIC DIRECTOR CONTROLS
+       ========================================= */
+
+    function cinematicWide() {
+
+        document.body.classList.remove(
+            "golden-hour",
+            "black-white"
+        );
+
+        document.body.classList.add(
+            "cinematic-mode"
+        );
+
+        document.querySelectorAll(
+            ".story-card"
+        ).forEach(card => {
+
+            card.style.transform =
+                "scale(0.98)";
+
+        });
+
+    }
+
+
+    function cinematicClose() {
+
+        document.body.classList.remove(
+            "golden-hour",
+            "black-white"
+        );
+
+        document.body.classList.add(
+            "cinematic-mode"
+        );
+
+        document.querySelectorAll(
+            ".story-card"
+        ).forEach(card => {
+
+            card.style.transform =
+                "scale(1.03)";
+
+        });
+
+    }
+
+
+    function cinematicGolden() {
+
+        document.body.classList.remove(
+            "black-white"
+        );
+
+        document.body.classList.add(
+            "cinematic-mode",
+            "golden-hour"
+        );
+
+    }
+
+
+    function cinematicBW() {
+
+        document.body.classList.remove(
+            "golden-hour"
+        );
+
+        document.body.classList.add(
+            "cinematic-mode",
+            "black-white"
+        );
+
+    }
+
+
+    function cinematicReset() {
+
+        document.body.classList.remove(
+            "cinematic-mode",
+            "golden-hour",
+            "black-white"
+        );
+
+        document.querySelectorAll(
+            ".story-card"
+        ).forEach(card => {
+
+            card.style.transform = "";
+
+        });
+
+    }
+
+</script>
